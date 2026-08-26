@@ -1,186 +1,159 @@
-{
-    question: "Your employee asks for salary early. 💰",
-    options: [
-        "💰 Sure!",
-        "😂 Why do you need it?",
-        "🏃 Run away.",
-        "😈 Work harder first."
-    ],
-    points: [5, 4, 1, 2],
-    reactions: [
-        "You are TOO nice! ❤️",
-        "Boss investigation mode activated 😂",
-        "💀 The boss has disappeared.",
-        "Employee motivation: 0% 😂"
-    ]
-},
+Timi udaas bhako malai man pardaina. 😂 Ma timro mood ramro banauna tadha bata bhaye pani full effort garirako chu.
 
-{
-    question: "It's Friday and your employee asks: 'Can I leave early?' 😭",
-    options: [
-        "❤️ Yes, go enjoy your weekend!",
-        "😂 Only if you finish your work.",
-        "😈 Absolutely not.",
-        "🏃 Let's both leave!"
-    ],
-    points: [5, 4, 2, 5],
-    reactions: [
-        "BEST BOSS EVER! 🥹",
-        "Fair enough! 👏",
-        "FINAL BOSS ENERGY 💀",
-        "HAHAHA who's running the company?! 😂"
-    ]
-}
+Timi chadai thik bhayera feri malai hasdai, jiskidai ra maya gardai call gareko sunna man cha. ❤️
 
-];
+Timi aile strong hunu pardaina.
 
-let currentQuestion = 0;
-let score = 0;
+Tired chau bhane tired bhana.
+Dukhi chau bhane dukhi bhana.
+Stress cha bhane malai bhana.
 
-function startGame() {
+Ma timro kura sunna yahi chu. ❤️
 
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("gameScreen").style.display = "block";
+Timi alone chainau hai Sanu.
 
-    currentQuestion = 0;
-    score = 0;
+Jati tadha bhaye pani, timro budi timro side ma cha. 🥺❤️
 
-    showQuestion();
-}
+Chadai thik hau mero budo.
 
-function showQuestion() {
+Ma timilai dherai miss garchu, dherai maya garchu, ani timi mero lagi ekdam special chau.
 
-    const q = questions[currentQuestion];
+Please take care of my favorite person. 🥺❤️🫂
 
-    document.getElementById("questionNumber").innerText =
-        currentQuestion + 1;
+</div>
 
-    document.getElementById("question").innerText =
-        q.question;
 
-    document.getElementById("reaction").innerText = "";
+<!-- MOTIVATION -->
 
-    document.getElementById("nextBtn").style.display = "none";
+<div class="motivation">
 
-    const optionsDiv = document.getElementById("options");
+<h2>💪 One More Thing, My Love ❤️</h2>
 
-    optionsDiv.innerHTML = "";
+<p>
 
-    q.options.forEach((option, index) => {
+Sanu, malai thaha cha aile sabai kura easy chaina.
 
-        const button = document.createElement("button");
+Naya country.
+Naya job.
+Naya environment.
+Kaam ko pressure.
+Paisa ko tension.
 
-        button.className = "option";
-        button.innerText = option;
+Kahile kahi timilai "ma sakdina" jasto feel huna sakcha.
 
-        button.onclick = function() {
-            chooseAnswer(index);
-        };
+Tara please yaad rakha—
 
-        optionsDiv.appendChild(button);
+<strong>
+Yo timro story ko difficult chapter matra ho,
+ending haina. ❤️
+</strong>
 
-    });
-}
+Bistarai sikdai jau.
+Bistarai adjust hudai jau.
+Bistarai agadi badhdai jau.
 
-function chooseAnswer(index) {
+Timi le sabai kura ekai din ma solve garnu pardaina.
 
-    const q = questions[currentQuestion];
+One day at a time. 🫂
 
-    score += q.points[index];
+Ma timi mathi believe garchu.
 
-    document.getElementById("reaction").innerText =
-        q.reactions[index];
+Ani sabai bhanda important kura...
 
-    const buttons =
-        document.querySelectorAll(".option");
+<strong>
+I'm proud of you, mero Sanu. ❤️
+</strong>
 
-    buttons.forEach(button => {
-        button.disabled = true;
-        button.style.opacity = "0.6";
-    });
+</p>
 
-    document.getElementById("nextBtn").style.display = "inline-block";
-}
+</div>
 
-function nextQuestion() {
 
-    currentQuestion++;
+<!-- LOVE END -->
 
-    if (currentQuestion < questions.length) {
+<div class="love-box">
 
-        showQuestion();
+<div class="big-heart">❤️</div>
 
-    } else {
+<p>
+Jati tadha bhaye pani...
+</p>
 
-        showResult();
+<p>
+<strong>My heart is always with you.</strong> 🥺❤️
+</p>
 
-    }
-}
+<div class="signature">
+I love you so much, mero budo 🫂❤️😘
+</div>
 
-function showResult() {
+</div>
 
-    document.getElementById("gameScreen").style.display = "none";
+</div>
 
-    document.getElementById("resultScreen").style.display = "block";
+</div>
 
-    const finalScore = Math.round(
-        (score / 25) * 100
-    );
 
-    document.getElementById("finalScore").innerText =
-        finalScore;
+<div class="footer">
+Made with ❤️ by your Budi
+</div>
 
-    let title;
-    let text;
-    let emoji;
 
-    if (finalScore >= 90) {
+<script>
 
-        emoji = "👼";
-        title = "SWEETEST BOSS!";
-        text =
-        "Your employees are VERY lucky! ❤️ But don't be too nice... they might start asking for salary increases every week 😂";
+/* Open surprise */
 
-    } else if (finalScore >= 70) {
+function openLetter(){
 
-        emoji = "😂";
-        title = "FUNNY BOSS!";
-        text =
-        "You are the boss everyone wants! You work hard, joke hard, and probably scare your employees only sometimes 😂";
+    document.getElementById("opening").style.opacity="0";
 
-    } else if (finalScore >= 50) {
+    setTimeout(function(){
 
-        emoji = "😈";
-        title = "STRICT BOSS!";
-        text =
-        "Your employees see you coming and suddenly remember they have work to do. 😂";
+        document.getElementById("opening").style.display="none";
 
-    } else {
-
-        emoji = "💀";
-        title = "FINAL BOSS!";
-        text =
-        "RUN! Nobody dares to ask you for a holiday, salary advance, or even a bathroom break! 💀😂";
-
-    }
-
-    document.getElementById("resultEmoji").innerText =
-        emoji;
-
-    document.getElementById("resultTitle").innerText =
-        title;
-
-    document.getElementById("resultText").innerText =
-        text;
-}
-
-function restartGame() {
-
-    document.getElementById("resultScreen").style.display = "none";
-
-    document.getElementById("startScreen").style.display = "block";
+    },1000);
 
 }
+
+
+/* Floating hearts */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const emojis=[
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "🥺",
+        "🫂"
+    ];
+
+    heart.innerHTML=
+        emojis[Math.floor(Math.random()*emojis.length)];
+
+    heart.style.left=
+        Math.random()*100+"vw";
+
+    heart.style.animationDuration=
+        (5+Math.random()*5)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+
+        heart.remove();
+
+    },10000);
+
+}
+
+setInterval(createHeart,600);
 
 </script>
 
