@@ -1,0 +1,188 @@
+{
+    question: "Your employee asks for salary early. 💰",
+    options: [
+        "💰 Sure!",
+        "😂 Why do you need it?",
+        "🏃 Run away.",
+        "😈 Work harder first."
+    ],
+    points: [5, 4, 1, 2],
+    reactions: [
+        "You are TOO nice! ❤️",
+        "Boss investigation mode activated 😂",
+        "💀 The boss has disappeared.",
+        "Employee motivation: 0% 😂"
+    ]
+},
+
+{
+    question: "It's Friday and your employee asks: 'Can I leave early?' 😭",
+    options: [
+        "❤️ Yes, go enjoy your weekend!",
+        "😂 Only if you finish your work.",
+        "😈 Absolutely not.",
+        "🏃 Let's both leave!"
+    ],
+    points: [5, 4, 2, 5],
+    reactions: [
+        "BEST BOSS EVER! 🥹",
+        "Fair enough! 👏",
+        "FINAL BOSS ENERGY 💀",
+        "HAHAHA who's running the company?! 😂"
+    ]
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function startGame() {
+
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("gameScreen").style.display = "block";
+
+    currentQuestion = 0;
+    score = 0;
+
+    showQuestion();
+}
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").innerText =
+        currentQuestion + 1;
+
+    document.getElementById("question").innerText =
+        q.question;
+
+    document.getElementById("reaction").innerText = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    const optionsDiv = document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+        button.innerText = option;
+
+        button.onclick = function() {
+            chooseAnswer(index);
+        };
+
+        optionsDiv.appendChild(button);
+
+    });
+}
+
+function chooseAnswer(index) {
+
+    const q = questions[currentQuestion];
+
+    score += q.points[index];
+
+    document.getElementById("reaction").innerText =
+        q.reactions[index];
+
+    const buttons =
+        document.querySelectorAll(".option");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+        button.style.opacity = "0.6";
+    });
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showResult();
+
+    }
+}
+
+function showResult() {
+
+    document.getElementById("gameScreen").style.display = "none";
+
+    document.getElementById("resultScreen").style.display = "block";
+
+    const finalScore = Math.round(
+        (score / 25) * 100
+    );
+
+    document.getElementById("finalScore").innerText =
+        finalScore;
+
+    let title;
+    let text;
+    let emoji;
+
+    if (finalScore >= 90) {
+
+        emoji = "👼";
+        title = "SWEETEST BOSS!";
+        text =
+        "Your employees are VERY lucky! ❤️ But don't be too nice... they might start asking for salary increases every week 😂";
+
+    } else if (finalScore >= 70) {
+
+        emoji = "😂";
+        title = "FUNNY BOSS!";
+        text =
+        "You are the boss everyone wants! You work hard, joke hard, and probably scare your employees only sometimes 😂";
+
+    } else if (finalScore >= 50) {
+
+        emoji = "😈";
+        title = "STRICT BOSS!";
+        text =
+        "Your employees see you coming and suddenly remember they have work to do. 😂";
+
+    } else {
+
+        emoji = "💀";
+        title = "FINAL BOSS!";
+        text =
+        "RUN! Nobody dares to ask you for a holiday, salary advance, or even a bathroom break! 💀😂";
+
+    }
+
+    document.getElementById("resultEmoji").innerText =
+        emoji;
+
+    document.getElementById("resultTitle").innerText =
+        title;
+
+    document.getElementById("resultText").innerText =
+        text;
+}
+
+function restartGame() {
+
+    document.getElementById("resultScreen").style.display = "none";
+
+    document.getElementById("startScreen").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
