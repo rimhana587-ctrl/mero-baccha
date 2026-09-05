@@ -1,84 +1,256 @@
-<p>
-            Timi chadai thik bhayera feri malai hasdai, jiskidai ra maya gardai call gareko sunna man cha. ❤️
-            </p>
+02:19
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <p>
-            Timi aile strong hunu pardaina. Tired chau bhane tired bhana, dukhi chau bhane dukhi bhana, stress cha bhane malai bhana. Ma timro kura sunna yahi chu.
-            </p>
+<title>Our Little Mystery ❤️</title>
 
-            <p>
-            Timi alone chainau hai Sanu. Jati tadha bhaye pani, timro Budi timro side ma cha. 🥺❤️
-            </p>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-            <p>
-            Chadai thik hau mero budo. Ma timilai dherai miss garchu, dherai maya garchu, ani timi mero lagi ekdam special chau.
-            </p>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #12001f, #3b0a45, #150021);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
 
-        </div>
+.card {
+    width: 100%;
+    max-width: 430px;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    padding: 30px 22px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
 
+.lock {
+    font-size: 65px;
+    animation: pulse 1.5s infinite;
+}
 
-        <div class="motivation">
+@keyframes pulse {
+    50% {
+        transform: scale(1.12);
+    }
+}
 
-            <h2>💪 For My Strong Boy ❤️</h2>
+h1 {
+    color: #ff8fc7;
+}
 
-            <p>
-            Mero Sanu, malai thaha cha aile timro lagi sabai kura easy chaina.
-            </p>
+h2 {
+    color: #ffd1e8;
+}
 
-            <p>
-            Naya country, naya job, naya environment ra dherai responsibility cha.
-            </p>
+p {
+    line-height: 1.7;
+    color: #f4ddeb;
+}
 
-            <p>
-            Kahile kahi timilai "ma sakdina" jasto feel huna sakcha.
-            </p>
+button {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 15px;
+    background: #ff4f9a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
 
-            <p>
-            Tara yaad rakha hai...
-            </p>
+button:hover {
+    transform: scale(1.04);
+}
 
-            <p>
-            <strong>
-            Yo timro story ko difficult chapter matra ho,
-            ending haina. ❤️
-            </strong>
-            </p>
+#clueScreen,
+#letterScreen {
+    display: none;
+}
 
-            <p>
-            Bistarai sikdai jau. Bistarai adjust hudai jau.
-            Bistarai agadi badhdai jau.
-            </p>
+.clue {
+    background: rgba(255,255,255,0.08);
+    padding: 18px;
+    border-radius: 18px;
+    margin: 15px 0;
+}
 
-            <p>
-            Timi le sabai kura ekai din ma solve garnu pardaina.
-            </p>
+.number {
+    color: #ff8fc7;
+    font-weight: bold;
+}
 
-            <p>
-            <strong>
-            One day at a time. 🫂❤️
-            </strong>
-            </p>
+.heart {
+    position: fixed;
+    bottom: -30px;
+    animation: floatUp 4s linear forwards;
+    pointer-events: none;
+}
 
-            <p>
-            Ma timi mathi believe garchu.
-            Ani timi mathi sadhai proud chu. ❤️
-            </p>
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 
-        </div>
+.letter {
+    text-align: left;
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 18px;
+}
 
+.final {
+    color: #ff9dcc;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
+</head>
 
-        <div class="final">
+<body>
 
-            🐰❤️<br><br>
+<div class="card">
 
-            I LOVE YOU SO MUCH<br>
-            MERO BUDO ❤️
+    <!-- START -->
+    <div id="startScreen">
 
+        <div class="lock">🔐</div>
+
+        <h1>CLASSIFIED FILE</h1>
+
+        <h2>Case: US ❤️</h2>
+
+        <p>
+            ⚠️ This file is highly confidential.
             <br><br>
+            Only one person is allowed to open it.
+            <br><br>
+            <b>Hint:</b> His name starts with the person
+            who has been stealing my heart for 4 months. 👀
+        </p>
 
-            Please take care of yourself for me. 🥺🫂
+        <button onclick="startMystery()">
+            🔓 OPEN FILE
+        </button>
+
+    </div>
+
+
+    <!-- CLUES -->
+    <div id="clueScreen">
+
+        <div class="lock">🕵️‍♀️</div>
+
+        <h1>MYSTERY MODE</h1>
+
+        <p>
+            Solve the clues one by one...
+            🔐
+        </p>
+
+        <div class="clue" id="clue"></div>
+
+        <button id="answer1" onclick="answer(1)"></button>
+        <button id="answer2" onclick="answer(2)"></button>
+        <button id="answer3" onclick="answer(3)"></button>
+
+        <p id="reaction"></p>
+
+    </div>
+
+
+    <!-- LETTER -->
+    <div id="letterScreen">
+
+        <div class="lock">💌</div>
+
+        <h1>MYSTERY SOLVED</h1>
+
+        <p>
+            🔓 Final file unlocked...
+        </p>
+
+        <div class="letter">
+
+            <p>
+                Hey you… 👀❤️
+            </p>
+
+            <p>
+                Do you know what today is?
+            </p>
+
+            <p>
+                It's the day our little story reaches
+                <b>4 months. 🥹❤️</b>
+            </p>
+
+            <p>
+                Four months ago, I didn't know that one
+                person could become such a special part
+                of my everyday life.
+            </p>
+
+            <p>
+                We've laughed, teased each other,
+                annoyed each other, missed each other,
+                had silly arguments and shared so many
+                little moments. 😂❤️
+            </p>
+
+            <p>
+                And somehow, among all those little
+                moments, you became someone I don't
+                want to imagine my days without.
+            </p>
+
+            <p>
+                Thank you for every smile, every
+                conversation, every little memory,
+                and even the annoying moments. 😂
+            </p>
+
+            <p class="final">
+                Happy 4 months, my Sanu. ❤️🥺
+            </p>
+
+            <p>
+                And now there's one final mystery...
+            </p>
+
+            <p class="final">
+                🔐 Will you unlock the next chapter
+                of our story with me? 🔑❤️
+            </p>
+
+            <p style="text-align:center;">
+                I love youuuuu. 🥺❤️
+            </p>
 
         </div>
+
+        <button onclick="makeItRain()">
+            ❤️ UNLOCK MY HEART ❤️
+        </button>
 
     </div>
 
@@ -87,50 +259,133 @@
 
 <script>
 
-function openLetter() {
+let clueNumber = 0;
 
-    document.getElementById("home").style.display = "none";
+const clues = [
 
-    document.getElementById("letter").style.display = "block";
+{
+    text: "🕵️ CLUE #1<br><br>Who is the person that makes me smile whenever I see his name on my phone? 📱❤️",
+    options: ["My Boss 😂", "My Sanu 🥺", "My Neighbor 😭"],
+    correct: 2
+},
 
-    window.scrollTo(0, 0);
+{
+    text: "🕵️ CLUE #2<br><br>How long has our little story officially been going? 👀❤️",
+    options: ["4 days 😭", "4 weeks 😂", "4 months 🥹"],
+    correct: 3
+},
+
+{
+    text: "🕵️ CLUE #3<br><br>What do I want to do with you after these 4 months? ❤️",
+    options: ["Forget you 😂", "Write more chapters together 🥺", "Block you 💀"],
+    correct: 2
+}
+
+];
+
+
+function startMystery() {
+
+    document.getElementById("startScreen").style.display = "none";
+
+    document.getElementById("clueScreen").style.display = "block";
+
+    showClue();
 
 }
 
 
-/* Floating hearts */
+function showClue() {
 
-function makeHeart() {
+    let current = clues[clueNumber];
 
-    var heart = document.createElement("div");
+    document.getElementById("clue").innerHTML = current.text;
 
-    heart.className = "heart";
+    document.getElementById("answer1").innerText =
+        current.options[0];
 
-    var hearts = [
-        "❤️",
-        "💕",
-        "💗",
-        "💖",
-        "💘",
-        "🥺",
-        "🫂",
-        "🐰"
-    ];
+    document.getElementById("answer2").innerText =
+        current.options[1];
 
-    heart.innerHTML =
-        hearts[Math.floor(Math.random() * hearts.length)];
+    document.getElementById("answer3").innerText =
+        current.options[2];
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+    document.getElementById("reaction").innerText = "";
 
-    document.body.appendChild(heart);
-
-    setTimeout(function() {
-        heart.remove();
-    }, 6000);
 }
 
-setInterval(makeHeart, 700);
+
+function answer(choice) {
+
+    let current = clues[clueNumber];
+
+    if (choice === current.correct) {
+
+        document.getElementById("reaction").innerText =
+            "✅ Correct! 🔓 Mystery unlocked...";
+
+        clueNumber++;
+
+        if (clueNumber < clues.length) {
+
+            setTimeout(showClue, 900);
+
+        } else {
+
+            setTimeout(showLetter, 900);
+
+        }
+
+    } else {
+
+        document.getElementById("reaction").innerText =
+            "❌ Wrong answer! 😭 Try again, Sanu! 😂";
+
+    }
+
+}
+
+
+function showLetter() {
+
+    document.getElementById("clueScreen").style.display = "none";
+
+    document.getElementById("letterScreen").style.display = "block";
+
+    makeItRain();
+
+}
+
+
+function makeItRain() {
+
+    for (let i = 0; i < 40; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML =
+            ["❤️","💖","💕","🥺","💗"][Math.floor(Math.random()*5)];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+
+    }
+
+}
 
 </script>
 
